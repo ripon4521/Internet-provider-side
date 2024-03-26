@@ -1,0 +1,119 @@
+
+.card {
+    --background: #111827;
+    --cardShadow: rgba(32,33,37,.1);
+    --cardShadowHover: rgba(32,33,37,.06);
+    --cardShadowActive: rgba(32,33,37,.55);
+    --cardBorder: #dbdce0;
+    --cardBorderActive: #1a73e8;
+   
+    --linkColor: #1967d2;
+    --ratingColor: #faab00;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    .card {
+      --background: ;
+      --cardShadow: rgba(7, 82, 243, 0.28);
+      --cardShadowHover: rgba(63, 11, 253, 0.16);
+      --cardShadowActive: rgba(43, 9, 235, 0.55);
+      --cardBorder: #0334f8;
+      --cardBorderActive: #0b64f5;
+      --textColor: #0131f0;
+      --linkColor: #8ab4f8;
+    }
+  }
+  
+  .card {
+   
+    aspect-ratio: 2/3;
+    background: var(--background);
+    color: var(--textColor);
+    border: 1px solid var(--cardBorder);
+    padding: 25px;
+    box-shadow: 8px 8px 0 var(--cardShadow);
+    transition: box-shadow .5s, transform .5s;
+    border-radius: 8px;
+    display: inline-block;
+  }
+  
+  .card:hover {
+    transform: translate(-2px, -4px);
+    box-shadow: 16px 16px 0 var(--cardShadowHover);
+  }
+  
+  .card:active {
+    transform: translate(-2px, -4px);
+    border: 2px solid var(--cardBorderActive);
+    box-shadow: 4px 4px 0 var(--cardShadowActive);
+  }
+  
+  .card > .icon,
+  .card > .title,
+  .card > .description {
+    margin-bottom: 0.7em;
+    cursor: default;
+    user-select: none;
+  }
+  
+  .card > .title {
+    margin-top: 1.5em;
+    font-weight: bold;
+  }
+  
+  .card > .description {
+    line-height: 1.5em;
+    min-height: 6em;
+  }
+  
+
+  .card > .rating {
+    font-size: 1.5em;
+    margin-bottom: 0.8em;
+    color: var(--ratingColor);
+    font-weight: bold;
+    position: relative;
+    width: max-content;
+  }
+  
+  .card > .rating:before {
+    content: "☆☆☆☆☆";
+  }
+  
+  .card > .rating:after {
+    content: "★★★★★";
+    position: absolute;
+    left: 0;
+    z-index: 0;
+    width: calc(var(--rating) * 1%);
+    overflow: hidden;
+  }
+  
+  .card > .link {
+    margin-bottom: 1rem;
+    color: var(--linkColor);
+    font-size: .8em;
+    font-weight: 600;
+  }
+  
+  /* Optional ~ Link the whole card */
+  .card > .link::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .card > .link:after {
+    content: "↗";
+    display: inline-block;
+    margin-left: .3em;
+    transition: transform .3s ease-in-out;
+  }
+  
+  .card:hover > .link:after {
+    transform: translate(.2em, -.2em);
+  }
+  
